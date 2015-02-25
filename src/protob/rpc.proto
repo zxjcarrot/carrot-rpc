@@ -1,0 +1,21 @@
+package carrot.rpc;
+
+enum Status {
+    SUCCESS = 1;    // successfully returned from the method call
+    ERROR = 2;      // some errors occurred during the call
+    NOT_FOUND = 3;  // the method called not found on the server side
+    FAILED = 4;     // server side failed to execute the method
+}
+
+message Request {
+    // id for each individual call, used to issue multiple calls
+    required uint64 id = 1; 
+    // descriptor for a specific method of a service in the form of: 'service.method'
+    required string method_identity = 2;
+}
+
+message Response {
+    required uint64 id = 1; /* id of the corresponding request */
+    required Status status = 2;
+    optional string message = 3;
+}

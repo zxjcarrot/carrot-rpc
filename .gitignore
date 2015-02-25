@@ -1,0 +1,7 @@
+.tag*
+*.o
+*.dSYM
+.DS_Store
+*.so
+carrotrpc-client
+carrotrpc-server

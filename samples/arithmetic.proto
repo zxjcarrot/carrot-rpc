@@ -1,0 +1,25 @@
+package rpc.arith;
+
+enum ArithType {
+    Addition = 1;
+    Subtraction = 2;
+    Multiplication = 3;
+    Division = 4;
+};
+
+
+message ArithRequest {
+    required ArithType type = 1;
+    optional uint64    op1 = 2;
+    optional uint64    op2 = 3;
+};
+
+message ArithResponse {
+    optional uint64   res = 1;   
+}
+
+service ArithService {
+    rpc compute(ArithRequest) returns (ArithResponse);
+};
+
+option cc_generic_services = true;
